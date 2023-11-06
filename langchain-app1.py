@@ -9,7 +9,6 @@ from langchain.callbacks import StreamlitCallbackHandler
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import MessagesPlaceholder
 
-
 load_dotenv()
 
 def create_agent_chain():
@@ -27,13 +26,15 @@ def create_agent_chain():
     memory= ConversationBufferMemory(memory_key="memory",return_messages=True)
 
     # Load tools
-    tools = load_tools(["ddg-search"], ["wikipedia"])
+    tools = load_tools(["ddg-search", "wikipedia"])
+
     return initialize_agent(
         tools,
         chat,
         agent=AgentType.OPENAI_FUNCTIONS,
         agent_kwargs=agent_kwargs,
-        memory=memory,)
+        memory=memory,
+        )
     
 if "agent_chain" not in st.session_state:
     st.session_state.agent_chain = create_agent_chain()
@@ -59,13 +60,7 @@ if prompt:
          st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        chat=ChatOpenAI(
-        model_name=os.environ["OPENAI_API_MODEL"],
-        temperature=os.environ["OPENAI_API_TEMPERATURE"]
-        )
         callback=StreamlitCallbackHandler(st.container())
-        agent_chain=create_agent_chain()
-        messages = [HumanMessage(content=prompt)]
         response = st.session_state.agent_chain.run(prompt,callbacks=[callback])
         st.markdown(response)
 
