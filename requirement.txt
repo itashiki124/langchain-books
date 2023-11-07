@@ -36,6 +36,7 @@ distlib==0.3.6
 dnspython==2.3.0
 docker==6.0.1
 duckduckgo-search==3.9.4
+dotenv==0.21.0
 elastic-transport==8.4.0
 elasticsearch==8.7.0
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl
