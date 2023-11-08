@@ -60,7 +60,7 @@ gTTS==2.3.1
 h11==0.14.0
 h2==4.1.0
 hpack==4.0.0
-httpcore==0.18.0
+httpcore==0.17.0
 httplib2==0.22.0
 httpx==0.24.1
 hyperframe==6.0.1
@@ -131,7 +131,7 @@ python-dateutil==2.8.2
 python-dotenv==1.0.0
 python-socks==2.2.0
 pytz==2023.3
-# pywin32==306
+pywin32==306
 PyYAML==6.0
 readability-lxml==0.8.1
 redis==4.5.4
